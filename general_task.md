@@ -40,7 +40,7 @@ After you’ve created configuration, we will work on its optimization like usin
 ## PRE-REQUISITES
 1. Fork current repository. A fork is a copy of a project and this allows you to make changes without affecting the original project.
 1. Clone the forked repository to you workstation. All actions should be done under your fork and Terraform gets it context from your local clone working directory:
-    - Change current directory to `/tf-epam-lab/base` folder and create `root.tf` file.
+    - Change current directory to `/cloud-provider-lab/base` folder and create `root.tf` file.
     - Add a `terraform {}` empty block to this file.
     - Create epmty files `variables.tf` and `locals.tf`. These files will be used for variables and local variables.
     - For AWS:
@@ -74,14 +74,14 @@ After you’ve created configuration, we will work on its optimization like usin
     Please use **underscore** Terraform resources naming, e.g. `my_resource` instead of `my-resource`.
 
 
-1. Change current directory  to `~/tf-epam-lab/compute` and repeat the steps in [2].
+1. Change current directory  to `~/cloud-provider-lab/compute` and repeat the steps in [2].
 
 You are ready for the lab!
 
 # Creating Infrastructure
 
 ## TASK 1 - Creating Network Resources
-Change current directory  to `~/tf-epam-lab/base`
+Change current directory  to `~/cloud-provider-lab/base`
 
 Create a network stack for your infrastructure:
 
@@ -134,7 +134,7 @@ Apply your changes when you're ready.
 
 ## TASK 2 - Create resources for SSH Authentication
 
-Ensure that the current directory is `~/tf-epam-lab/base`
+Ensure that the current directory is `~/cloud-provider-lab/base`
 
 Create a custom ssh key-pair to access your cloud compute instances:
 
@@ -175,7 +175,7 @@ Apply your changes when ready.
 
 ## TASK 3 - Create an Object Storage
 
-Ensure that the current directory is  `~/tf-epam-lab/base`
+Ensure that the current directory is  `~/cloud-provider-lab/base`
 
 Create an object bucket as the storage for your infrastructure:
 
@@ -211,7 +211,7 @@ Apply your changes when ready.
 - [PLACEHOLDER] TBD After terraform test checks will be implemented
 
 ## TASK 4 - Create IAM Resources
-Ensure that the current directory is  `~/tf-epam-lab/base`
+Ensure that the current directory is  `~/cloud-provider-lab/base`
 
 Create IAM resources:
 - Create an `iam.tf` file. Create IAM resources there.
@@ -248,7 +248,7 @@ Apply your changes when ready.
 - [PLACEHOLDER] TBD After terraform test checks will be implemented
 
 ## TASK 5 - Configure Network Security
-Ensure that the current directory is  `~/tf-epam-lab/base`
+Ensure that the current directory is  `~/cloud-provider-lab/base`
 
 Store all resources from this task in the `network_security.tf` file.
 Create the following resources:
@@ -294,7 +294,7 @@ Apply your changes when ready.
 
 
 ## TASK 6 - Form TF Output
-Ensure that current directory is  `~/tf-epam-lab/base`
+Ensure that current directory is  `~/cloud-provider-lab/base`
 
 Create outputs for your configuration:
 
@@ -320,8 +320,8 @@ Apply your changes when ready. You can update outputs without using `terraform a
 
 Learn about [terraform remote state data source](https://www.terraform.io/docs/language/state/remote-state-data.html).
 
-! Change the current directory to  `~/tf-epam-lab/compute`
-! Copy `root.tf` from `~/tf-epam-lab/base` to `~/tf-epam-lab/compute`
+! Change the current directory to  `~/cloud-provider-lab/compute`
+! Copy `root.tf` from `~/cloud-provider-lab/base` to `~/cloud-provider-lab/compute`
 
 Add remote state resources to your configuration to be able to import output resources:
 
@@ -344,7 +344,7 @@ Apply your changes when ready.
 **Note**: In this task we are going to join all resources created before to run a compute node using template with a start-up script. See [deployment diagram](#deployment-diagram).
 
 
-Ensure that the current directory is  `~/tf-epam-lab/compute`.
+Ensure that the current directory is  `~/cloud-provider-lab/compute`.
 
 Store all resources from this task in the `application.tf` file.
 
@@ -407,7 +407,7 @@ Learn about [terraform data sources](https://www.terraform.io/docs/language/data
 In this task we are going to use a data driven approach instead to use remote state data source. This approach could be more flexible and remove dependency between states.
 
 #### base configuration
-Change current directory to `~/tf-epam-lab/base`
+Change current directory to `~/cloud-provider-lab/base`
 
 Refine your configuration :
 - Use a data source to request
@@ -423,11 +423,11 @@ Store all resources from this task in the `data.tf` file.
 Refer to this data sources in your in case it works. E.g. Azure Subscription ID is required for most resources but not AWS Accound Id.
 
 #### compute configuration
-Change the current directory to `~/tf-epam-lab/compute`
+Change the current directory to `~/cloud-provider-lab/compute`
 
 Refine your configuration:
 
-- Use a data source to request resource group created in the `~/tf-epam-lab/base` and assign it to your resources.
+- Use a data source to request resource group created in the `~/cloud-provider-lab/base` and assign it to your resources.
 
 ### For AWS:
 - Following data sources are required: `vpc_id`, `public_subnet_ids`[set of strings], `security_group_id_ssh`, `security_group_id_http`, `security_group_id_http_lb`; As for the `iam_instance_profile_name`, `key_name` and  `s3_bucket_name` - they are contain simple text and could be strictly defined with locals without calling data sources.
@@ -569,7 +569,7 @@ If applicable all resources should be defined with the provider alias.
 
 ## TASK 13 - Expose node output with nginx
 
-Ensure that the current directory is  `~/tf-epam-lab/compute`
+Ensure that the current directory is  `~/cloud-provider-lab/compute`
 
 Change init script in the task 8 as follows:
 
@@ -601,7 +601,7 @@ Refine your configurations:
 - [Optional] Refine `compute` configuration by creating application resources behind a Load Balancer.
 
 
-Store your modules in `~/tf-epam-lab/modules/` subfolders.
+Store your modules in `~/cloud-provider-lab/modules/` subfolders.
 
 Run `terraform validate` and `terraform fmt` to check if your modules are valid and fit to a canonical format and style.
 Run `terraform plan` to see your changes and re-apply your changes if needed.
