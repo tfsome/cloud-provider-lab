@@ -1,4 +1,7 @@
 # cloud-provider-lab
+
+![ˈtɛrəfɔːm](https://i.imgur.com/RXAzrGo.jpg)
+
 Hello and Welcome to `Terraform in Cloud: practical lab` page.
 
 Dive into Terraform self-study materials and hands-on tasks covering core IaC concepts. Advanced tasks are optional. Contributions are welcome
