@@ -6,8 +6,8 @@ Dive into Terraform self-study materials and hands-on tasks covering core IaC co
 ---
 ## Study plan:
 
-1. [Core concepts](#concepts.md)
-2. [Practical tasks](#general_task)
+1. [Core concepts](./concepts.md)
+2. [Practical tasks](./general_task)
 
 
 ---
