@@ -4,7 +4,8 @@
 
 Hello and Welcome to `Terraform in Cloud: practical lab` page.
 
-Dive into Terraform self-study materials and hands-on tasks covering core IaC concepts. Advanced tasks are optional. Contributions are welcome
+Dive into Terraform self-study materials and hands-on tasks covering core IaC concepts. Advanced tasks are optional. Contributions are welcome.
+Tasks designed and could be completed in any of 3 cloud providers: AWS, Azure and GCP.
 
 ---
 ## Study plan:
