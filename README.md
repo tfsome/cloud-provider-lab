@@ -87,25 +87,25 @@ Create a network stack for your infrastructure:
 
 ### For AWS:
 
--	**VPC**: `name={StudentName}-{StudentSurname}-01-vpc`, `cidr=10.10.0.0/16`
+-	**VPC**: `name={SomeName}-01-vpc`, `cidr=10.10.0.0/16`
 -	**Public subnets**:
-    - `name={StudentName}-{StudentSurname}-01-subnet-public-a`, `cidr=10.10.1.0/24`, `az=a`
-    - `name={StudentName}-{StudentSurname}-01-subnet-public-b`, `cidr=10.10.3.0/24`, `az=b`
-    - `name={StudentName}-{StudentSurname}-01-subnet-public-c`, `cidr=10.10.5.0/24`, `az=c`
--	**Internet gateway**: `{StudentName}-{StudentSurname}-01-igw`
--	**Routing table to bind IGW with Public subnets**: `name={StudentName}-{StudentSurname}-01-rt`
+    - `name={SomeName}-01-subnet-public-a`, `cidr=10.10.1.0/24`, `az=a`
+    - `name={SomeName}-01-subnet-public-b`, `cidr=10.10.3.0/24`, `az=b`
+    - `name={SomeName}-01-subnet-public-c`, `cidr=10.10.5.0/24`, `az=c`
+-	**Internet gateway**: `{SomeName}-01-igw`
+-	**Routing table to bind IGW with Public subnets**: `name={SomeName}-01-rt`
 
 ### For GCP:
 
--	**VPC**: `name={StudentName}-{StudentSurname}-01-vpc`, `auto_create_subnetworks=false`
+-	**VPC**: `name={SomeName}-01-vpc`, `auto_create_subnetworks=false`
 -	**Public subnetworks**:
-    - `name={StudentName}-{StudentSurname}-01-subnetwork-central`, `cidr=10.10.1.0/24`, `region=us-central1`
-    - `name={StudentName}-{StudentSurname}-01-subnetwork-east`, `cidr=10.10.3.0/24`, `region=us-east1`
+    - `name={SomeName}-01-subnetwork-central`, `cidr=10.10.1.0/24`, `region=us-central1`
+    - `name={SomeName}-01-subnetwork-east`, `cidr=10.10.3.0/24`, `region=us-east1`
 
 ### For Azure:
-- **Resource Group**: `name={StudentName}-{StudentSurname}-01`
--	**Virtual Network**: `name={StudentName}-{StudentSurname}-01-vnet-us-central`, `cidr=10.10.0.0/16`, `location="centralus"`
--	**Subnets**: `name={StudentName}-{StudentSurname}-01-subnet`, `cidr=10.10.1.0/24`
+- **Resource Group**: `name={SomeName}-01`
+-	**Virtual Network**: `name={SomeName}-01-vnet-us-central`, `cidr=10.10.0.0/16`, `location="centralus"`
+-	**Subnets**: `name={SomeName}-01-subnet`, `cidr=10.10.1.0/24`
 
 **Hint**: A local value assigns a name to an expression, so you can use it multiple times within a module without repeating it.
 
@@ -116,7 +116,7 @@ If you use terraform variables, store them in `variables.tf`.
 Equip all possible resources with following tags or labels:
   - `Terraform=true`,
   - `Project=epam-tf-lab`
-  - `Owner={StudentName}_{StudentSurname}`
+  - `Owner={You name}`
 
 **Note**: Not every cloud resources have `tags` or `labels` property.
 
@@ -160,7 +160,7 @@ Create a custom ssh key-pair to access your cloud compute instances:
 Equip all possible resources with following tags or labels:
   - `Terraform=true`
   - `Project=epam-tf-lab`
-  - `Owner={StudentName}_{StudentSurname}`
+  - `Owner={You name}`
 
 Run `terraform validate` and `terraform fmt` to check if your configuration is valid and fits to a canonical format and style. Do this each time before applying your changes.
 
@@ -196,7 +196,7 @@ Create an object bucket as the storage for your infrastructure:
 Equip all possible resources with following tags or labels:
   - `Terraform=true`
   - `Project=epam-tf-lab`
-  - `Owner={StudentName}_{StudentSurname}`
+  - `Owner={You name}`
 
 Run `terraform validate` and `terraform fmt` to check if your configuration is valid and fits to a canonical format and style. Do this each time before applying your changes.
 Run `terraform plan` to see your changes.
@@ -216,24 +216,24 @@ Ensure that the current directory is  `~/cloud-provider-lab/base`
 Create IAM resources:
 - Create an `iam.tf` file. Create IAM resources there.
   ### For AWS:
-  -	**IAM group** (`name={StudentName}-{StudentSurname}-01-group`).
+  -	**IAM group** (`name={SomeName}-01-group`).
   -	**IAM policy** (`name=write-to-epam-tf-lab`) with write permission for "epam-aws-tf-lab$-{random_string.my_numbers.result}" bucket only.
 
     **Hint**: store your policy as json document side by side with configurations (or create 'files' subfolder for storing policy) and use templatefile() function to transfer IAM policy with imported S3 bucket name to a resource.
   -	Create **IAM role**, attach the policy to it and create **IAM instance profile** for this IAM role. Allow to assume this role for ec2 service.
   ### For GCP:
-  -	Create **Service account** (`account_id={StudentName}-{StudentSurname}-01-account`).
+  -	Create **Service account** (`account_id={SomeName}-01-account`).
   - Assign the `Storage Object Creator` role to the Service account.
   ### For Azure:
-  - **User Assigned Identity** (`name={StudentName}-{StudentSurname}-01`)
-  -	**Role** (`name={StudentName}-{StudentSurname}-01`) with write permission for storage account created on the previous stage.
+  - **User Assigned Identity** (`name={SomeName}-01`)
+  -	**Role** (`name={SomeName}-01`) with write permission for storage account created on the previous stage.
   - Assign the Role to the User Assigned Identity.
 
 
 Equip all possible resources with following tags or labels:
   - `Terraform=true`
   - `Project=epam-tf-lab`
-  - `Owner={StudentName}_{StudentSurname}`
+  - `Owner={Your_name}`
 
 Run `terraform validate`  and `terraform fmt` to check if your configuration is valid and fits to a canonical format and style. Do this each time before applying your changes.
 Run `terraform plan` to see your changes.
@@ -278,7 +278,7 @@ Create the following resources:
 Equip all possible resources with following tags or labels:
   - `Terraform=true`
   - `Project=epam-tf-lab`
-  - `Owner={StudentName}_{StudentSurname}`
+  - `Owner={You name}`
 
 Run `terraform validate`  and `terraform fmt` to check if your configuration is valid and fits to a canonical format and style. Do this each time before applying  your changes.
 Run `terraform plan` to see your changes.
@@ -383,7 +383,7 @@ Create required resources:
 Equip all possible resources with following tags or labels:
   - `Terraform=true`
   - `Project=epam-tf-lab`
-  - `Owner={StudentName}_{StudentSurname}`
+  - `Owner={You name}`
 
 Run `terraform validate` and `terraform fmt` to check if your configuration valid and fits to a canonical format and style. Do this each time before applying your changes.
 Run `terraform plan` to see your changes.
